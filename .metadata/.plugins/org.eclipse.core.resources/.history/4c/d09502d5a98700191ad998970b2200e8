@@ -1,0 +1,11 @@
+package utils;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+public class DataDao {
+	
+	private static final Map<String,taikhoan> mapTaikhoan = new HashMap<String,taikhoan>();
+	
+}

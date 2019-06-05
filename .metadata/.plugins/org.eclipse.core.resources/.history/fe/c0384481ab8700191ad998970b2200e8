@@ -1,0 +1,15 @@
+package config;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class Cauhinhvaitro {
+
+	 public static final String ChuTich = "Chutich";
+	 public static final String Nguoimua = "Nguoimua";
+	 
+	 
+}

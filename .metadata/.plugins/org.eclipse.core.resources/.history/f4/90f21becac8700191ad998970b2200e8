@@ -1,0 +1,43 @@
+package config;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class Cauhinhvaitro {
+
+	 public static final String ChuTich = "Chutich";
+	 public static final String Nguoimua = "Nguoimua";
+	 
+	 private static final Map<String,List<String>> mapConfig = new HashMap<String,List<String>>();
+	 
+//	 static {
+//		 init{};
+//	 }
+	 
+	 private static void init() {
+		 //Cấu hình vai trò cho chủ tịch
+		 List<String> urlPatterns1 = new ArrayList<String>();
+		 
+		 urlPatterns1.add("/userInfo");
+		 urlPatterns1.add("/admin");
+		 mapConfig.put(ChuTich,urlPatterns1);
+		 //cấu hình vai trò người mua
+		 List<String> urlPatterns21 = new ArrayList<String>();
+		 
+		 urlPatterns1.add("/userInfo");
+		 urlPatterns1.add("/user");
+		 mapConfig.put(ChuTich,urlPatterns21);
+		 
+	 }
+	 public static Set<String> getAllAppVaitro(){
+		 return mapConfig.keySet();
+	 }
+	 
+	 public static List<String> getUrlPatternsForVaitro(String vaitro){
+		 return mapConfig.get(vaitro);
+	 }
+	 
+}

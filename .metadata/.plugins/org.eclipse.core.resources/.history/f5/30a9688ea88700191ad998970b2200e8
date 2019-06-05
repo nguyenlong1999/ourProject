@@ -1,0 +1,32 @@
+package securitywebbanrau;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class taikhoanUser {
+	public static final String GENDER_MALE = "NAM";
+	public static final String GENDER_FEMALE = "NU";
+	 
+	   private String taikhoan;
+	   private String tuoi;
+	   private String matkhau;
+	 
+	   private List<String> vaitro;
+	 
+	   public taikhoanUser() {
+	 
+	   }
+	   public taikhoanUser(String taikhoan, String matkhau, String tuoi, String... vaitro) {
+		   this.taikhoan =taikhoan;
+		   this.tuoi = tuoi;
+		   this.matkhau = matkhau;
+		   this.vaitro = new ArrayList<String>(); 
+		   	if(vaitro!=null) {
+		   		for (String v : vaitro) {
+					this.vaitro.add(v);
+				}
+		   	}
+				 
+			 
+	   }
+}
