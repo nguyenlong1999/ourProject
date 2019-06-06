@@ -1,5 +1,5 @@
 package config;
-
+//cấu hình các vai trò và các chức năng(các trang) được phép truy cập ứng dụng với vai trò đó
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
