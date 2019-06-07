@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import config.Cauhinhvaitro;
 public class Baomat {
 //ktra có bắt buộc phải đăng nhập?
-	public static boolean isKiemtra(HttpServletRequest request) {
+	public static boolean isKiemtraTrang(HttpServletRequest request) {
 				String urlPattern = UrlPatternUtils.getUrlPattern(request);
 				
 				Set<String> vaitros = Cauhinhvaitro.getAllAppVaitro();
