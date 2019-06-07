@@ -24,6 +24,7 @@ public class Vaitronguoidungyeucau {
 		if(vaitros == null) {
 			return this.realRequest.isUserInRole(vaitro);
 		}
+	
 		return vaitros.contains(vaitro);
 	}
 	@Override
