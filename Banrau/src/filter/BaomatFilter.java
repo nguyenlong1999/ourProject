@@ -72,8 +72,19 @@ public class BaomatFilter implements Filter{
 				return;
 			}
 			// ktra người dùng có vai trò hợp lệ hay không?
-		
+			boolean hasVaitro= Baomat.hasVaitro(wrapRequest);
+				if(!hasVaitro) {
+					RequestDispatcher dispatcher = request.getServletContext().getNamedDispatcher("/JSPFile/Tuchoitruycap.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
 		}
+		chain.doFilter(wrapRequest, response);
 	}
+	@Override
+	public void init(FilterConfig fConfig) throws ServletException{
+		
+	}
+	
 
 }

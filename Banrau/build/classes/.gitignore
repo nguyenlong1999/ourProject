@@ -1,3 +1,7 @@
-/request/
+/bean/
+/config/
+/eror/
 /filter/
+/request/
+/servlet/
 /utils/

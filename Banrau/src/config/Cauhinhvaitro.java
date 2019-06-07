@@ -21,15 +21,15 @@ public class Cauhinhvaitro {
 //Cấu hình vai trò cho chủ tịch
 		 List<String> urlPatterns1 = new ArrayList<String>();
 		 
-		 urlPatterns1.add("/userInfo");
-		 urlPatterns1.add("/admin");
+		 urlPatterns1.add("/thongtinnguoidung");
+		 urlPatterns1.add("/giamdoc");
 		 mapConfig.put(ChuTich,urlPatterns1);
 //cấu hình vai trò người mua
 		 List<String> urlPatterns21 = new ArrayList<String>();
 		 
-		 urlPatterns1.add("/userInfo");
-		 urlPatterns1.add("/user");
-		 mapConfig.put(ChuTich,urlPatterns21);
+		 urlPatterns1.add("/thongtinnguoidung");
+		 urlPatterns1.add("/nhanvien");
+		 mapConfig.put(Nguoimua,urlPatterns21);
 		 
 	 }
 	 public static Set<String> getAllAppVaitro(){

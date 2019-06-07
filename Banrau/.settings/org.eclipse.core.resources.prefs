@@ -1,6 +1,14 @@
 eclipse.preferences.version=1
+encoding//WebContent/JSPFile/DangNhapPage.jsp=UTF-8
+encoding//WebContent/JSPFile/Giamdoc.jsp=UTF-8
+encoding//WebContent/JSPFile/Nguoimua.jsp=UTF-8
+encoding//WebContent/JSPFile/Tuchoitruycap.jsp=UTF-8
+encoding//WebContent/JSPFile/_Menu.jsp=UTF-8
 encoding//src/config/Cauhinhvaitro.java=UTF-8
 encoding//src/filter/BaomatFilter.java=UTF-8
+encoding//src/request/Vaitronguoidungyeucau.java=UTF-8
+encoding//src/servlet/Dangnhap.java=UTF-8
+encoding//src/servlet/Thoatra.java=UTF-8
 encoding//src/utils/AppUtils.java=UTF-8
 encoding//src/utils/Baomat.java=UTF-8
 encoding//src/utils/DataDao.java=UTF-8

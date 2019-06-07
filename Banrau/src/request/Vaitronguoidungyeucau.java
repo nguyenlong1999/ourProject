@@ -40,7 +40,7 @@ public class Vaitronguoidungyeucau extends HttpServletRequestWrapper {
         if (this.taikhoan == null) {
             return realRequest.getUserPrincipal();
         }
-     
+     // trả lại đúng người dùng
         return new Principal() {
         	@Override
             public String getName() {
