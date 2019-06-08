@@ -1,19 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8"> 
 <title>Đăng nhập</title>
 </head>
 <body>
-<jsp:include page="_Menu.jsp"></jsp:include>   
+<%-- <jsp:include page="_Menu.jsp"></jsp:include>    --%>
  
       <h3>Login Page</h3>
  
       <p style="color: red;">${errorString}</p>
  
-      <form method="POST" action="${pageContext.request.contextPath}/dangnhap">
+      <form method="POST" action="${pageContext.request.contextPath}/login">
          <input type="hidden" name="redirectId" value="${param.redirectId}" />
          <table border="0">
             <tr>

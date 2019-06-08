@@ -1,50 +1,48 @@
 package request;
 
-
-import java.util.List;
-import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-public class Vaitronguoidungyeucau extends HttpServletRequestWrapper {
-	
-	private String taikhoan;
-	private List<String> vaitros = null;
+public class UserRoleRequestWrapper extends HttpServletRequestWrapper {
+	private String user;
+	private List<String> roles = null;
 	private HttpServletRequest realRequest;
 	
-	public Vaitronguoidungyeucau(String tk,List<String> vtro,HttpServletRequest request)
+	public UserRoleRequestWrapper(String tk,List<String> vtro,HttpServletRequest request)
 	{
 		super(request);
-		this.taikhoan = tk;
-		this.vaitros = vtro;
+		this.user = tk;
+		this.roles = vtro;
 		this.realRequest = request;
+		System.out.println("chayvaoday4");
 	}
 	
 	
 	@Override
 	public boolean isUserInRole(String vaitro) {
-		if(vaitros == null) {
+		if(roles == null) {
 			return this.realRequest.isUserInRole(vaitro);
 		}
-		return vaitros.contains(vaitro);
+		return roles.contains(vaitro);
 	}
 	
 	
 	
 	@Override
 	public Principal getUserPrincipal() {
-        if (this.taikhoan == null) {
+        if (this.user == null) {
             return realRequest.getUserPrincipal();
         }
      // trả lại đúng người dùng
         return new Principal() {
         	@Override
             public String getName() {
-                return taikhoan;
+                return user;
             }
         };
 	}

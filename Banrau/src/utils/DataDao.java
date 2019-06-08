@@ -2,27 +2,27 @@ package utils;
 // truy vấn csdl
 import java.util.HashMap;
 import java.util.Map;
-import config.Cauhinhvaitro;
-import bean.taikhoan;
+import config.SecurityConfig;
+import bean.UserAccount;
 
 public class DataDao {
 	
-	private static final Map<String,taikhoan> mapTaikhoan = new HashMap<String,taikhoan>();
+	private static final Map<String,UserAccount> mapUsers = new HashMap<String,UserAccount>();
 	static {
 		initUsers();
 	}
 	private static void initUsers() {
 		//create tk chủ tịch, có 2 vai trò
-		taikhoan chutich = new taikhoan("chutich","123",taikhoan.GENDER_FEMALE,Cauhinhvaitro.ChuTich,Cauhinhvaitro.Nguoimua);
-		taikhoan nguoimua = new taikhoan("nv1","123",taikhoan.GENDER_MALE,Cauhinhvaitro.Nguoimua);
-		 mapTaikhoan.put(chutich.getTaikhoan(),chutich);
-		 mapTaikhoan.put(nguoimua.getTaikhoan(),nguoimua);
+		UserAccount chutich = new UserAccount("chutich","123",UserAccount.GENDER_FEMALE,SecurityConfig.ChuTich,SecurityConfig.Nguoimua);
+		UserAccount nguoimua = new UserAccount("nv1","123",UserAccount.GENDER_MALE,SecurityConfig.Nguoimua);
+		mapUsers.put(chutich.getUserName(),chutich);
+		mapUsers.put(nguoimua.getUserName(),nguoimua);
 	}
 	
 	// search người dùng theo tk & pass
-	public static taikhoan timkiem(String ten,String mk) {
-		taikhoan f = mapTaikhoan.get(ten);
-		if(f!= null && f.getMatkhau().equals(mk)) {
+	public static UserAccount timkiem(String ten,String mk) {
+		UserAccount f = mapUsers.get(ten);
+		if(f!= null && f.getPassword().equals(mk)) {
 			return f;
 		}
 		return null;

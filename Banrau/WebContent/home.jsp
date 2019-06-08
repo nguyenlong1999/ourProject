@@ -6,7 +6,11 @@
 </head>
 <body>
  	<h1>Hello World</h1>
- 	<a href="/Banrau/JSPFile/page1.jsp" >ng�o ng�o qu�</a>
- 	�dasdass
+ 	<a href="/Banrau/JSPFile/page1.jsp" >ngáo ngáo quá</a>
+ 	Chào mừng bạn đến với website của chúng tôi
+ 	ádasdass
+ 	<p>Mời bạn đăng nhập</p>
+	<a href="${pageContext.request.contextPath}/login">Đăng nhập</a>
+
 </body>
 </html>

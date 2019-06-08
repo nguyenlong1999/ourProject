@@ -14,16 +14,16 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.taikhoan;
-import request.Vaitronguoidungyeucau;
+import bean.UserAccount;
+import request.UserRoleRequestWrapper;
 import utils.AppUtils;
-import utils.Baomat;
+import utils.SecurityUtils;
 
 @WebFilter("/*")
-public class BaomatFilter implements Filter{
-	public BaomatFilter() {
-		
-	}
+public class SecurityFilter implements Filter{
+
+	public SecurityFilter() {
+    }
 	
 	@Override
 	public void destroy() {}
@@ -39,7 +39,7 @@ public class BaomatFilter implements Filter{
 		//thông tin người dùng được lưu trong session
 		//sau khi login thành công
 		
-		taikhoan dangnhap = AppUtils.getLoginUser(request.getSession());
+		UserAccount loginedUser = AppUtils.getLoginUser(request.getSession());
 		
 		if(servletPath.equals("/login")) {
 			chain.doFilter(request, response);
@@ -47,32 +47,30 @@ public class BaomatFilter implements Filter{
 		}
 		HttpServletRequest wrapRequest = request;
 		
-		if(dangnhap != null) {
+		if(loginedUser != null) {
 			//tên tk
-			String userName = dangnhap.getTaikhoan();
+			String userName = loginedUser.getUserName();
 			
 			//các vai trò 
-			List<String> vaitros = dangnhap.getVaitro();
+			List<String> vaitros = loginedUser.getRoles();
 			
 			//gói các request cũ bởi một Request mới với các thông tin tài khoản + vai trò
-			wrapRequest = new Vaitronguoidungyeucau(userName, vaitros, request);
+			wrapRequest = new UserRoleRequestWrapper(userName, vaitros, request);
 		}
-		
+		System.out.println("chayvaoday3");
 		// các trang bắt buộc phải login
-		if(Baomat.isKiemtraTrang(request)) {
+		if(SecurityUtils.isKiemtraTrang(request)) {
 			// nếu người dùng chưa login
 			// chuyển hướng tới trang đăng nhâp
-			if(dangnhap == null) {
-				String requestUri = request.getRequestURI();
-				
+			if(loginedUser == null) {
+				String requestUri = request.getRequestURI();	
 				//Lưu trữ trang hiện tại để đến sau khi login thành công
 				int redirectId = AppUtils.storeRedirectAfterLoginUrl(request.getSession(),requestUri);
-				
 				response.sendRedirect(wrapRequest.getContextPath() + "/login?redirectId="+redirectId);
 				return;
 			}
 			// ktra người dùng có vai trò hợp lệ hay không?
-			boolean hasVaitro= Baomat.hasVaitro(wrapRequest);
+			boolean hasVaitro= SecurityUtils.hasPermission(wrapRequest);
 				if(!hasVaitro) {
 					RequestDispatcher dispatcher = request.getServletContext().getNamedDispatcher("/JSPFile/Tuchoitruycap.jsp");
 					dispatcher.forward(request, response);
@@ -85,6 +83,4 @@ public class BaomatFilter implements Filter{
 	public void init(FilterConfig fConfig) throws ServletException{
 		
 	}
-	
-
 }

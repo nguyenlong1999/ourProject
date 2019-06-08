@@ -40,11 +40,12 @@ public class UrlPatternUtils {
 		int i= servletPath.lastIndexOf('.');
 		if(i!=-1) {
 			String ext= servletPath.substring(i+1);
-			urlPattern = "*."+ext;
+			urlPattern = "*."+ext;	
 			has = hasUrlPattern(servletContext, urlPattern);
 			if(has) {
 				return urlPattern;
 			}
+			System.out.println(urlPattern+"testt");
 		}
 		return "/";
 	}

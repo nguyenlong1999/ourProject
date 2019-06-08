@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class taskNguoimua extends HttpServlet{
-	@WebServlet("/nguoimua")
-	public class EmployeeTaskServlet extends HttpServlet {
+@WebServlet("/nguoimua")
+public class taskNguoimua extends HttpServlet {
+	
 	   private static final long serialVersionUID = 1L;
 	 
-	   public EmployeeTaskServlet() {
+	   public taskNguoimua() {
 	      super();
-	   }
+	      }
 	 
 	   @Override
 	   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,5 +32,4 @@ public class taskNguoimua extends HttpServlet{
 	 
 	      doGet(request, response);
 	   }
-	}
 }

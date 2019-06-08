@@ -4,7 +4,7 @@ import java.util.Map;
  
 import javax.servlet.http.HttpSession;
  
-import bean.taikhoan;;
+import bean.UserAccount;
 public class AppUtils {
 
 	private static int REDIRECT_ID = 0;
@@ -14,14 +14,14 @@ public class AppUtils {
 	
 	//Lưu thông tin người dùng vào Session
 	
-	public static void storeLoginedUser(HttpSession session, taikhoan login) {
+	public static void storeLoginedUser(HttpSession session, UserAccount login) {
 		// trên jsp có thể truy cập thông qua ${login}
-		session.setAttribute("login", login);
+		session.setAttribute("loginedUser", login);
 	}
 	
 	// Lấy thông tin người dùng ở Session
-	public static taikhoan getLoginUser(HttpSession session) {
-		taikhoan loginedUser = (taikhoan) session.getAttribute("login");
+	public static UserAccount getLoginUser(HttpSession session) {
+		UserAccount loginedUser = (UserAccount) session.getAttribute("login");
 		return loginedUser;
 	}
 	

@@ -1,21 +1,19 @@
-<a href="${pageContext.request.contextPath}/nhanvien">
-  Employee Task
-</a>
+
+<meta charset="UTF-8">
+<%-- <a href="${pageContext.request.contextPath}/nguoimua"> --%>
+<!--  Khách hàng -->
+<!-- </a> -->
+<!-- || -->
+<%-- <a href="${pageContext.request.contextPath}/giamdoc"> --%>
+<!--   Giám đốc -->
+<!-- </a> -->
+<!-- || -->
+<%-- <a href="${pageContext.request.contextPath}/login"> --%>
+<!--  Đăng nhập -->
+<!-- </a> -->
 ||
-<a href="${pageContext.request.contextPath}/giamdoc">
-  Manager Task
-</a>
-||
-<a href="${pageContext.request.contextPath}/thongtinnguoidung">
-  User Info
-</a>       
-||
-<a href="${pageContext.request.contextPath}/dangnhap">
-  Login
-</a>
-||
-<a href="${pageContext.request.contextPath}/thoatra">
-  Logout
+<a href="${pageContext.request.contextPath}/logout">
+ <h1>Logout</h1> 
 </a>
  
 &nbsp;

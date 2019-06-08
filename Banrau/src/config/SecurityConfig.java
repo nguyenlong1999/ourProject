@@ -5,17 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-public class Cauhinhvaitro {
+public class SecurityConfig {
 
 	 public static final String ChuTich = "Chutich";
 	 public static final String Nguoimua = "Nguoimua";
 	 
 	 private static final Map<String,List<String>> mapConfig = new HashMap<String,List<String>>();
 	 
-//	 static {
-//		 init{};
-//	 }
+	 static {
+		 init();
+	 }
 	 
 	 private static void init() {
 //Cấu hình vai trò cho chủ tịch
@@ -25,11 +24,11 @@ public class Cauhinhvaitro {
 		 urlPatterns1.add("/giamdoc");
 		 mapConfig.put(ChuTich,urlPatterns1);
 //cấu hình vai trò người mua
-		 List<String> urlPatterns21 = new ArrayList<String>();
-		 
+		 List<String> urlPatterns2 = new ArrayList<String>();
+		 System.out.println("chayvaoday1");
 		 urlPatterns1.add("/thongtinnguoidung");
-		 urlPatterns1.add("/nhanvien");
-		 mapConfig.put(Nguoimua,urlPatterns21);
+		 urlPatterns1.add("/nguoimua");
+		 mapConfig.put(Nguoimua,urlPatterns2);
 		 
 	 }
 	 public static Set<String> getAllAppVaitro(){
@@ -39,5 +38,4 @@ public class Cauhinhvaitro {
 	 public static List<String> getUrlPatternsForVaitro(String vaitro){
 		 return mapConfig.get(vaitro);
 	 }
-	 
 }
