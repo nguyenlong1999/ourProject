@@ -19,7 +19,7 @@ import request.UserRoleRequestWrapper;
 import utils.AppUtils;
 import utils.SecurityUtils;
 
-@WebFilter("/*")
+@WebFilter("/home/")
 public class SecurityFilter implements Filter{
 
 	public SecurityFilter() {
@@ -36,49 +36,48 @@ public class SecurityFilter implements Filter{
 		
 		String servletPath = request.getServletPath();
 		
-		//thông tin người dùng được lưu trong session
-		//sau khi login thành công
-		
-		UserAccount loginedUser = AppUtils.getLoginUser(request.getSession());
-		
-		if(servletPath.equals("/login")) {
-			chain.doFilter(request, response);
-			return;
-		}
-		HttpServletRequest wrapRequest = request;
-		
-		if(loginedUser != null) {
-			//tên tk
-			String userName = loginedUser.getUserName();
-			
-			//các vai trò 
-			List<String> vaitros = loginedUser.getRoles();
-			
-			//gói các request cũ bởi một Request mới với các thông tin tài khoản + vai trò
-			wrapRequest = new UserRoleRequestWrapper(userName, vaitros, request);
-		}
-		System.out.println("chayvaoday3");
-		// các trang bắt buộc phải login
-		if(SecurityUtils.isKiemtraTrang(request)) {
-			// nếu người dùng chưa login
-			// chuyển hướng tới trang đăng nhâp
-			if(loginedUser == null) {
-				String requestUri = request.getRequestURI();	
-				//Lưu trữ trang hiện tại để đến sau khi login thành công
-				int redirectId = AppUtils.storeRedirectAfterLoginUrl(request.getSession(),requestUri);
-				response.sendRedirect(wrapRequest.getContextPath() + "/login?redirectId="+redirectId);
-				return;
-			}
-			// ktra người dùng có vai trò hợp lệ hay không?
-			boolean hasVaitro= SecurityUtils.hasPermission(wrapRequest);
-				if(!hasVaitro) {
-					RequestDispatcher dispatcher = request.getServletContext().getNamedDispatcher("/JSPFile/Tuchoitruycap.jsp");
-					dispatcher.forward(request, response);
+				UserAccount loginedUser = AppUtils.getLoginUser(request.getSession());
+				System.out.println(servletPath+" aaa");
+				if(servletPath.equals("/login")) {
+					chain.doFilter(request, response);
 					return;
 				}
-		}
-		chain.doFilter(wrapRequest, response);
-	}
+				HttpServletRequest wrapRequest = request;
+				
+				if(loginedUser != null) {
+					//tên tk
+					String userName = loginedUser.getUserName();
+					
+					//các vai trò 
+					List<String> vaitros = loginedUser.getRoles();
+					
+					//gói các request cũ bởi một Request mới với các thông tin tài khoản + vai trò
+					wrapRequest = new UserRoleRequestWrapper(userName, vaitros, request);
+				}
+				System.out.println("chayvaoday3");
+				// các trang bắt buộc phải login
+				if(SecurityUtils.isKiemtraTrang(request)) {
+					// nếu người dùng chưa login
+					// chuyển hướng tới trang đăng nhâp
+					if(loginedUser == null) {
+						String requestUri = request.getRequestURI();	
+						//Lưu trữ trang hiện tại để đến sau khi login thành công
+						int redirectId = AppUtils.storeRedirectAfterLoginUrl(request.getSession(),requestUri);
+						response.sendRedirect(wrapRequest.getContextPath() + "/login?redirectId="+redirectId);
+						return;
+					}
+					// ktra người dùng có vai trò hợp lệ hay không?
+					boolean hasVaitro= SecurityUtils.hasPermission(wrapRequest);
+						if(!hasVaitro) {
+							RequestDispatcher dispatcher = request.getServletContext().getNamedDispatcher("/JSPFile/Tuchoitruycap.jsp");
+							dispatcher.forward(request, response);
+							return;
+						}
+				}
+				chain.doFilter(wrapRequest, response);
+				}
+
+		
 	@Override
 	public void init(FilterConfig fConfig) throws ServletException{
 		
