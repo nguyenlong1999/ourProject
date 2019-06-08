@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
  
       <p style="color: red;">${errorString}</p>
  
-      <form method="POST" action="${pageContext.request.contextPath}/login">
+      <form method="POST" action="#">
          <input type="hidden" name="redirectId" value="${param.redirectId}" />
          <table border="0">
             <tr>
@@ -33,7 +34,7 @@
             </tr>
          </table>
       </form>
- 
+
       <p style="color:blue;">Login with:</p>
        
       chutich/123 <br>

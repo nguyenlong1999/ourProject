@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 		            System.out.println("chayvaoday5");
 		            request.setAttribute("errorMessage", errorMessage);
 		 
-		            RequestDispatcher dispatcher= this.getServletContext().getRequestDispatcher("/");
+		            RequestDispatcher dispatcher= this.getServletContext().getRequestDispatcher("/login");
 		 
 		            dispatcher.forward(request, response);
 		            return;
