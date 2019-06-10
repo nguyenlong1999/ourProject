@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import bean.UserAccount;
 import utils.AppUtils;
 import utils.DataDao;
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/loginagain")
+public class LoginAgain extends HttpServlet {
 	
 		  private static final long serialVersionUID = 1L;
 		  
-		    public LoginServlet() {
+		    public LoginAgain() {
 		        super();
 		    }
 		 
@@ -37,13 +37,13 @@ public class LoginServlet extends HttpServlet {
 		        String password = request.getParameter("password");
 		        UserAccount userAccount = DataDao.timkiem(userName, password);
 		        
-		        if (userAccount == null) {
+		        if (userAccount == null || password == null) {
 		            String errorMessage = "Mời bạn nhập Tài khoản và Mật khẩu";
 		            System.out.println("chayvaoday5");
 		            request.setAttribute("errorMessage", errorMessage);
 		 
-		            RequestDispatcher dispatcher= this.getServletContext().getRequestDispatcher("/");
-		          
+		            RequestDispatcher dispatcher= this.getServletContext().getRequestDispatcher("/login");
+		 
 		            dispatcher.forward(request, response);
 		            return;
 		        }
