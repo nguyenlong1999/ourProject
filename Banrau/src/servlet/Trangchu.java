@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet({ "/home" })
+@WebServlet({ "/" })
 public class Trangchu extends HttpServlet{
 
 	 private static final long serialVersionUID = 1L;
@@ -21,7 +21,7 @@ public class Trangchu extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	     throws ServletException, IOException {
 	 
-	   RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/JSPFile/homePage.jsp");
+	   RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("./home.jsp");
 	        dispatcher.forward(request, response);
 	    }
 	 

@@ -12,13 +12,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
-<body>
-<!--  	<h1>Hello World</h1> -->
-<!--  	<a href="/Banrau/JSPFile/page1.jsp" >ngáo ngáo quá</a> -->
-<!--  	Chào mừng bạn đến với website của chúng tôi -->
-<!--  	ádasdass -->
- 	<p>Mời bạn đăng nhập</p>
-	<a href="${pageContext.request.contextPath}/login">Đăng nhập</a>
+<body style="position: relative;">
+<%-- <jsp:include page="/DangNhapPage.jsp"></jsp:include>    --%>
 
 <nav class="navbar navbar-inverse aqua-gradient" style="border-radius:0;position:relative">
   <div class="container-fluid">
@@ -157,8 +152,6 @@
 </footer>
 
 </div>
-
-
 
 </body>
 </html>

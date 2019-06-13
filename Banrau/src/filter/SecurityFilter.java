@@ -19,7 +19,7 @@ import request.UserRoleRequestWrapper;
 import utils.AppUtils;
 import utils.SecurityUtils;
 
-@WebFilter("/home/")
+@WebFilter("/home")
 public class SecurityFilter implements Filter{
 
 	public SecurityFilter() {
@@ -38,7 +38,7 @@ public class SecurityFilter implements Filter{
 		
 				UserAccount loginedUser = AppUtils.getLoginUser(request.getSession());
 				System.out.println(servletPath+" aaa");
-				if(servletPath.equals("/login")) {
+				if(servletPath.equals("/home")) {
 					chain.doFilter(request, response);
 					return;
 				}
@@ -63,7 +63,8 @@ public class SecurityFilter implements Filter{
 						String requestUri = request.getRequestURI();	
 						//Lưu trữ trang hiện tại để đến sau khi login thành công
 						int redirectId = AppUtils.storeRedirectAfterLoginUrl(request.getSession(),requestUri);
-						response.sendRedirect(wrapRequest.getContextPath() + "/login?redirectId="+redirectId);
+						
+						response.sendRedirect(wrapRequest.getContextPath() + "/home?redirectId="+redirectId);
 						return;
 					}
 					// ktra người dùng có vai trò hợp lệ hay không?

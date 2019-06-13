@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import bean.UserAccount;
 import utils.AppUtils;
 import utils.DataDao;
-@WebServlet("/login")
+@WebServlet(urlPatterns = {"/home"})
 public class LoginServlet extends HttpServlet {
 	
 		  private static final long serialVersionUID = 1L;
@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 		    protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		            throws ServletException, IOException {
 		 
-		        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/JSPFile/DangNhapPage.jsp");
+		        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/home.jsp");
 		 
 		        dispatcher.forward(request, response);
 		    }
@@ -41,9 +41,7 @@ public class LoginServlet extends HttpServlet {
 		            String errorMessage = "Mời bạn nhập Tài khoản và Mật khẩu";
 		            System.out.println("chayvaoday5");
 		            request.setAttribute("errorMessage", errorMessage);
-		 
 		            RequestDispatcher dispatcher= this.getServletContext().getRequestDispatcher("/");
-		          
 		            dispatcher.forward(request, response);
 		            return;
 		        }
