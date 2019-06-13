@@ -1,0 +1,8 @@
+D?ng server : Em s? d?ng tomcat7
+=>> dang nh?p vào : http://localhost:8080/Banrau/home
+->> ?n nút dang nh?p : 
+nh?p tài kho?n : chutich 
+m?t kh?u:123 
+ho?c Tài kho?n: nv1 
+m?t kh?u :123
+=>> ?n nút logout d? tr? v? trang ch?
